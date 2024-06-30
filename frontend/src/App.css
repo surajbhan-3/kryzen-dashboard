@@ -262,6 +262,18 @@
   .default-div{
     display: flex;
   }
+
+  .ap>button{
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    
+  }
+  .ap>button span{
+    margin: 0px 5px;
+  }
   
   @media (max-width:820px) {
     .card-wrapper{

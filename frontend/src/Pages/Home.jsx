@@ -97,16 +97,30 @@ function Home() {
   };
 
   const sortProducts = () => {
+   
     let sorted = [...filteredProducts];
-    sorted.sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return new Date(a.date) - new Date(b.date);
-      } else {
-        return new Date(b.date) - new Date(a.date);
-      }
-    });
-
-    setFilteredProducts(sorted);
+   
+    if(sorted.length>0){
+      sorted.sort((a, b) => {
+        if (sortOrder === 'asc') {
+          return new Date(a.date) - new Date(b.date);
+        } else {
+          return new Date(b.date) - new Date(a.date);
+        }
+      });
+  
+      setFilteredProducts(sorted);
+    }else{
+      data.sort((a, b) => {
+        if (sortOrder === 'asc') {
+          return new Date(a.date) - new Date(b.date);
+        } else {
+          return new Date(b.date) - new Date(a.date);
+        }
+      });
+  
+      setFilteredProducts(data);
+    }
   };
 
 
@@ -170,7 +184,7 @@ function Home() {
                   <div className="h-top-bar">
                     <div className='dp-mp'>
                       <div className='dp'><h2>Products List</h2></div>
-                      <div><button onClick={handleClick} id='mp'>{<IoBagAddOutline />} Add Products</button></div>
+                      <div className='ap'><button onClick={handleClick} id='mp'>{<IoBagAddOutline />} <span>Add Products</span></button></div>
                     </div>
                   </div>
 

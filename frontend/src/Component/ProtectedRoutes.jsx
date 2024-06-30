@@ -7,11 +7,14 @@ function ProtectedRoutes({children}) {
     const currentPath = location.pathname;
     const verifyUser =currentPath.split("/")[1]
 
-    if(!user){ 
+
+      if(!user){ 
         return ( <Navigate to="/login" />)
     }else if(user !== verifyUser){
       return (<Navigate to="/login" /> )
     }
+     
+    
     
   return children
 }
