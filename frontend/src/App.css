@@ -259,6 +259,9 @@
   #show-error{
     color: red;
   }
+  .default-div{
+    display: flex;
+  }
   
   @media (max-width:820px) {
     .card-wrapper{

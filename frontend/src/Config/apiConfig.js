@@ -1,12 +1,12 @@
 // // development server
-// const API_BASE_URL = 'http://localhost:4500';
-// export const AUTH_BASE_URL ='http://localhost:4500';
+const API_BASE_URL = 'http://localhost:4500';
+export const AUTH_BASE_URL ='http://localhost:4500';
 
 
 // production server
 
-const API_BASE_URL = 'https://kryzen-dashboard.vercel.app';
-export const AUTH_BASE_URL ='https://kryzen-dashboard.vercel.app';
+// const API_BASE_URL = 'https://kryzen-dashboard.vercel.app';
+// export const AUTH_BASE_URL ='https://kryzen-dashboard.vercel.app';
 
 
 export const getToken = () => localStorage.getItem("token");

@@ -35,7 +35,7 @@ const navigate = useNavigate()
 
      getSingleProducts()
 
-  },[])
+  },[productId])
   
 const initialValues = {
     name:'',

@@ -38,11 +38,11 @@ app.post("/api/user/login", userLogin )
 
 
 app.post("/api/product/:user/add_product", AuthenticationMiddleware, addProduct);
-app.patch("api/product/:user/update_product/:id/:title",AuthenticationMiddleware, editProduct);
-app.get("api/product/:user/single_product/:id/:title",AuthenticationMiddleware, getSingleProduct);
+app.patch("/api/product/:user/update_product/:id/:title",AuthenticationMiddleware, editProduct);
+app.get("/api/product/:user/single_product/:id/:title",AuthenticationMiddleware, getSingleProduct);
 app.get("/api/product/:user/all_product", AuthenticationMiddleware, getAllProduct);
 app.get("/api/product/:user/filter_products/:category", AuthenticationMiddleware, filterProductByCategory);
-app.delete("api/product/:user/delete_product/:id/:title", AuthenticationMiddleware, deleteProduct)
+app.delete("/api/product/:user/delete_product/:id/:title", AuthenticationMiddleware, deleteProduct)
 
 
 

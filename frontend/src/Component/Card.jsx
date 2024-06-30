@@ -8,12 +8,15 @@ const {user} = useParams()
 const handleEdit = async()=>{
       navigate(`/${user}/edit_product/${product_id}/${title}`)
 }
+
+
 const handleSingleProductPage = (product_id, title)=>{
       navigate(`/${user}/single_product/${product_id}/${title}`)
 }
 
 
   return (
+    //** This is a card component from the Tabler.io */
     <div className="card">
       {/* Photo */}
       <div
