@@ -125,8 +125,10 @@ function Home() {
 
 
   const handleDelete = async (p_id) => {
+    setLoading(true)
     const response = await apiService.delete(`/${cleanUser}/delete_product/${p_id}`)
     if (response.status === 204) {
+      console.log(response, "fsdafsd")
       const filterData = data.filter((el) => {
         if (el.id !== p_id) {
           return el;
@@ -134,6 +136,7 @@ function Home() {
 
       })
       setFilteredProducts(filterData)
+      setLoading(false)
     }
   }
 
