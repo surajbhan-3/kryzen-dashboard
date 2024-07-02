@@ -78,7 +78,8 @@ function Home() {
     let result = data;
 
     if (type && type !== 'all') {
-      result = result.filter(product => product.type === type);
+      console.log(type, 'types')
+    result = result.filter(product => product.type === type)
     } else if (type === 'all') {
       setFilteredProducts(data)
     }
@@ -91,7 +92,14 @@ function Home() {
       result = result.filter(product => product.price <= parseInt(maxPrice));
     }
 
-    setFilteredProducts(result);
+    if(result.length>0){
+      setFilteredProducts(result);
+    console.log(filteredProducts, 'asdf')
+    }else{
+      console.log('dhfs')
+      alert(`No products availabe in ${type} category`)
+      setFilteredProducts([])
+    }
 
 
   };
@@ -192,7 +200,8 @@ function Home() {
                   </div>
 
                   <div className="card-wrapper"  >
-                    {filteredProducts.length ? filteredProducts.map((el) => (
+                  
+                    {filteredProducts.length>0 ? filteredProducts.map((el) => (
                       <div key={el.id}>
                         <Card
                           product_id={el.id}
