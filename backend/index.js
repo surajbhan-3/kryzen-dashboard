@@ -42,7 +42,7 @@ app.patch("/api/product/:user/update_product/:id/:title",AuthenticationMiddlewar
 app.get("/api/product/:user/single_product/:id/:title",AuthenticationMiddleware, getSingleProduct);
 app.get("/api/product/:user/all_product", AuthenticationMiddleware, getAllProduct);
 app.get("/api/product/:user/filter_products/:category", AuthenticationMiddleware, filterProductByCategory);
-app.delete("/api/product/:user/delete_product/:id/:title", AuthenticationMiddleware, deleteProduct)
+app.delete("/api/product/:user/delete_product/:id", AuthenticationMiddleware, deleteProduct)
 
 
 

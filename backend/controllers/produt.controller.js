@@ -30,6 +30,15 @@ console.log(type, "types")
         res.status(200).send({ message: 'Your product is added to the queue and will be processed shortly', flag:true, result: true });
         setTimeout(async()=>{
          try {
+           
+            const checkProductName = await prisma.product.findMany({where:{type:convertType,name:name}})
+            console.log(checkProductName)
+        
+               if(checkProductName.length>0){
+                return res.status(401).json({"message":"Name and should be unique"})
+               }
+    
+
             const newProduct = await prisma.product.create({
                 data:{
                     name:capitalizeEachWord(name),
@@ -48,6 +57,14 @@ console.log(type, "types")
         },parseInt(settime)*60*1000)
 
        }else{
+
+        const checkProductName = await prisma.product.findMany({where:{type:convertType,name:name}})
+        console.log(checkProductName)
+    
+           if(checkProductName.length>0){
+            return res.status(401).json({"message":"Name and should be unique"})
+           }
+
         const newProduct = await prisma.product.create({
             data:{
                 name:capitalizeEachWord(name),
@@ -68,12 +85,13 @@ console.log(type, "types")
         console.log(error)
         res.status(500).send(
             {
-                "message":"Internal Server Error",
+                "message":'Name and Price should be unique',
                 "Error":error.message,
                 "result":false
             })
             
     }
+
 
 }
 
@@ -93,7 +111,7 @@ const editProduct = async(req,res)=>{
             return res.status(400).send({"message":"Invalid product type", "result":false})
         }
 
-        const product = await prisma.product.findUnique({where:{id:parseInt(id), name:title}})
+        const product = await prisma.product.findUnique({where:{id:parseInt(id), name:title,}})
         if(!product){
             return res.status(404).send({"message":"Product is not available", "result":false})
         }
@@ -125,18 +143,19 @@ const editProduct = async(req,res)=>{
 
 const deleteProduct = async(req,res)=>{
 console.log("heool")
-    const {user,id, title} = req.params;
+    const {user,id} = req.params;
     const authenticatedUser = req.body.user
     const userId = req.body.userId
     try {
         if(authenticatedUser !== user){
             return res.status(403).send({"message":"Forbidden:Action is not allowed","result":false})
         }
+        console.log(userId, id)
         const productDelete = await prisma.product.delete({
             where:{
                 userId:parseInt(userId), 
                 id:parseInt(id),
-                name:title
+               
             }
         })
         return res.status(204).send({"message":"Product Deleted successfully", result:true})

@@ -31,7 +31,7 @@ enum ProductType {
 model Product {
   id    Int      @id @default(autoincrement())
   image String
-  name  String   @unique
+  name  String  
   price Int
   description String  @default("Add description")
   type  ProductType

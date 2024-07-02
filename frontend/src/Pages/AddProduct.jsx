@@ -22,6 +22,8 @@ const onSubmit = async (values, { setSubmitting }) => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }
       })
+      console.log(response)
+      console.log('shldfsd')
        if(response.data.flag === true){
         alert("Product added to queue")
         setLoading(false)
@@ -30,7 +32,8 @@ const onSubmit = async (values, { setSubmitting }) => {
         setLoading(false)
        }
      } catch (error) {
-        if(error.response.status=== 500){
+      console.log(error)
+        if(error.response.status=== 401){
              setCredentialError("Product name should be unique")
         }
         setLoading(false)

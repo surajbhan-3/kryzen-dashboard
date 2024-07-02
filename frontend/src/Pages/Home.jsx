@@ -124,8 +124,8 @@ function Home() {
   };
 
 
-  const handleDelete = async (p_id, title) => {
-    const response = await apiService.delete(`/${cleanUser}/delete_product/${p_id}/${title}`)
+  const handleDelete = async (p_id) => {
+    const response = await apiService.delete(`/${cleanUser}/delete_product/${p_id}`)
     if (response.status === 204) {
       const filterData = data.filter((el) => {
         if (el.id !== p_id) {
